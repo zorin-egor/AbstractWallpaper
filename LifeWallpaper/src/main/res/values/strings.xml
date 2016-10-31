@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Abstract wallpaper</string>
+    <string name="hint_dynamic_change">You can change form of uniform and dynamic graphic by 2 point touch of screen and move.</string>
+    <string name="button_dynamic_uniform">Uniform</string>
+    <string name="button_dynamic_random">Dynamic</string>
+    <string name="button_static_random">Static</string>
+    <string name="button_red">Red</string>
+    <string name="button_green">Green</string>
+    <string name="button_blue">Blue</string>
+    <string name="button_random">Random</string>
+    <string name="button_install_wallpaper">Install wallpaper</string>
+    <string name="button_exit">Exit</string>
+    <string name="message_button_red">Red version install</string>
+    <string name="message_button_green">Green version install</string>
+    <string name="message_button_blue">Blue version install</string>
+    <string name="message_button_random">Random version install</string>
+    <string name="message_button_dynamic_uniform">Dynamic uniform - change only points, which contains in figure.</string>
+    <string name="message_button_dynamic_random">Dynamic random - change point, arguments and radius of figure.</string>
+    <string name="message_button_static_random">Static random - change only points, which contains in figure.</string>
+    <string name="message_button_wallpaper">Install wallpaper</string>
+    <string name="message_button_exit">Buy-buy</string>
+</resources>
