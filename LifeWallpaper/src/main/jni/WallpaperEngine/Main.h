@@ -11,7 +11,7 @@
 class Main {
 
     public:
-        Main(   JNIEnv * _env, jobject _assetManager, jobject _pngManager, jint _width, jint _height, jint _color, jint _form) :
+        Main(   JNIEnv * _env, jobject _assetManager, jobject _pngManager, jint _width, jint _height, jint _color, jint _form, jboolean _isChange) :
                 env(_env),
                 assetManager(_assetManager),
                 pngManager(_pngManager),
@@ -19,6 +19,7 @@ class Main {
                 HEIGHT(_height),
                 COLOR(_color),
                 FORM(_form),
+                isChange(_isChange),
                 COEFFICIENT((GLfloat)_width / (GLfloat)_height)
         {
                 LOGI("Main();");
@@ -33,7 +34,7 @@ class Main {
         }
 
         void step();
-        void setSettings(int color, int form);
+        void setSettings(int color, int form, bool isChange);
         void action(GLfloat x, GLfloat y);
 
     private:
@@ -68,6 +69,8 @@ class Main {
 
         // Snow objects for change angle
         Graphic * pGraphic;
+        // Dynamically change
+        bool isChange;
 };
 
 #endif

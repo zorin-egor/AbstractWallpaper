@@ -26,6 +26,18 @@ class ManageTexture {
                 createPackTexture();
             }
 
+        ~ManageTexture(){
+            //LOGI("~ManageTexture");
+            for(int i = 0; i < TEXTURE_TYPE::SIZE; i++)
+                delete arrayTextures[i];
+
+            glDeleteTextures(TEXTURE_TYPE::SIZE, texturesIDs);
+            checkGLError("ManageTexture::~ManageTexture - glDeleteTextures");
+
+            delete [] texturesIDs;
+            delete [] arrayTextures;
+        }
+
         struct Texture {
             char * pixels;
             int width;
@@ -47,15 +59,6 @@ class ManageTexture {
 
         GLuint getTexturesPackIDs(ManageTexture::TEXTURE_TYPE texture){
             return texturesIDs[texture];
-        }
-
-        ~ManageTexture(){
-            //LOGI("~ManageTexture");
-            for(int i = 0; i < TEXTURE_TYPE::SIZE; i++)
-                delete arrayTextures[i];
-
-            delete [] arrayTextures;
-            delete [] texturesIDs;
         }
 
     private:

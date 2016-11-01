@@ -13,6 +13,7 @@ class Graphic : public Render {
 
         Graphic(FUNCTION_TYPE _type,
                 COLOR_TYPE _color,
+                bool _isChange,
                 GLuint _count,
                 GLfloat _centerX,
                 GLfloat _centerY,
@@ -27,30 +28,31 @@ class Graphic : public Render {
                 GLuint _starArguments,
                 GLuint _starSize,
                 GLuint _starTotalDeltaSpeed) : type(_type),
-                                            color(_color),
-                                            count(_count),
-                                            centerX(_centerX),
-                                            centerY(_centerY),
-                                            radiusX(_radiusX),
-                                            radiusY(_radiusY),
-                                            programID(_programID),
-                                            textureID(_textureID),
-                                            starsAngle(_starsAngle),
-                                            starColor(_starColor),
-                                            starCenter(_starCenter),
-                                            starRadius(_starRadius),
-                                            starArguments(_starArguments),
-                                            starSize(_starSize),
-                                            starTotalDeltaSpeed(_starTotalDeltaSpeed),
-                                            previousActionX(0.0f),
-                                            previousActionY(0.0f),
-                                            STRICT_ARGUMENTS_MAX(5.0f),
-                                            STRICT_ARGUMENTS_MIN(1.0f),
-                                            STRICT_SPEED_MAX(10000.0f),
-                                            STRICT_SPEED_MIN(0.0f),
-                                            SIZE_POINT(5.0f),
-                                            DARGUMENT_ARRAY_SPEED(0.000001f),
-                                            STRICT_TOUCH_CHANGE(1000.0f)
+                                               color(_color),
+                                               isChange(_isChange),
+                                               count(_count),
+                                               centerX(_centerX),
+                                               centerY(_centerY),
+                                               radiusX(_radiusX),
+                                               radiusY(_radiusY),
+                                               programID(_programID),
+                                               textureID(_textureID),
+                                               starsAngle(_starsAngle),
+                                               starColor(_starColor),
+                                               starCenter(_starCenter),
+                                               starRadius(_starRadius),
+                                               starArguments(_starArguments),
+                                               starSize(_starSize),
+                                               starTotalDeltaSpeed(_starTotalDeltaSpeed),
+                                               previousActionX(0.0f),
+                                               previousActionY(0.0f),
+                                               STRICT_ARGUMENTS_MAX(5.0f),
+                                               STRICT_ARGUMENTS_MIN(1.0f),
+                                               STRICT_SPEED_MAX(10000.0f),
+                                               STRICT_SPEED_MIN(0.0f),
+                                               SIZE_POINT(5.0f),
+                                               DARGUMENT_ARRAY_SPEED(0.000001f),
+                                               STRICT_TOUCH_CHANGE(1000.0f)
     {
         LOGI("Graphic::Graphic()");
         isVisible = true;
@@ -66,7 +68,7 @@ class Graphic : public Render {
 
     void render();
     void setCoords(GLfloat x, GLfloat y);
-    void setSettings(COLOR_TYPE color, FUNCTION_TYPE type);
+    void setSettings(COLOR_TYPE color, FUNCTION_TYPE type, bool isChange);
 
     void setVisible(bool _isVisible){
         isVisible = _isVisible;
@@ -131,6 +133,8 @@ private:
     bool isVisible;
     // Program work
     bool isProgramWork;
+    // Change dynamically or not?
+    bool isChange;
 };
 
 #endif

@@ -22,7 +22,8 @@ public class WallpaperGLRender implements GLSurfaceView.Renderer {
                             width,
                             height,
                             WallpaperApplication.getApplication().getColors(),
-                            WallpaperApplication.getApplication().getForms());
+                            WallpaperApplication.getApplication().getForms(),
+                            WallpaperApplication.getApplication().isChange());
     }
 
     @Override

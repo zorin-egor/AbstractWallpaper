@@ -327,7 +327,8 @@ void Graphic::setValues(){
             }
 
             // Move points
-            arguments[i] += dArgumentsTransformSpeed[i];
+            if(isChange)
+                arguments[i] += dArgumentsTransformSpeed[i];
         }
     }
 
@@ -385,9 +386,10 @@ void Graphic::setCoords(GLfloat x, GLfloat y){
     }
 }
 
-void Graphic::setSettings(COLOR_TYPE color, FUNCTION_TYPE type){
+void Graphic::setSettings(COLOR_TYPE color, FUNCTION_TYPE type, bool isChange){
     this->color = color;
     this->type = type;
+    this->isChange = isChange;
 
     // Wait while, programs end work
     while(this->isProgramWork);

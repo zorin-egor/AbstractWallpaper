@@ -25,6 +25,7 @@ public class LifeWallpaperActivity extends Activity implements Button.OnClickLis
     private Button installDynamicRandom;
     private Button installStaticRandom;
     private Button installWallpaper;
+    private Button changeShape;
     private Button exit;
     private Toast toast;
 
@@ -51,6 +52,8 @@ public class LifeWallpaperActivity extends Activity implements Button.OnClickLis
         installStaticRandom.setOnClickListener(this);
         installWallpaper = (Button) findViewById(R.id.button_install_wallpaper);
         installWallpaper.setOnClickListener(this);
+        changeShape = (Button) findViewById(R.id.button_set_change);
+        changeShape.setOnClickListener(this);
         exit = (Button) findViewById(R.id.button_exit);
         exit.setOnClickListener(this);
         // Advice
@@ -105,50 +108,65 @@ public class LifeWallpaperActivity extends Activity implements Button.OnClickLis
             case R.id.button_install_red:
                 WallpaperApplication.getApplication().setColor(WallpaperApplication.RED);
                 WallpaperLib.setSettings(   WallpaperApplication.getApplication().getColors(),
-                                            WallpaperApplication.getApplication().getForms());
+                                            WallpaperApplication.getApplication().getForms(),
+                                            WallpaperApplication.getApplication().isChange());
                 toast.setText(getResources().getString(R.string.message_button_red));
                 toast.show();
                 break;
             case R.id.button_install_green:
                 WallpaperApplication.getApplication().setColor(WallpaperApplication.GREEN);
                 WallpaperLib.setSettings(   WallpaperApplication.getApplication().getColors(),
-                                            WallpaperApplication.getApplication().getForms());
+                                            WallpaperApplication.getApplication().getForms(),
+                        WallpaperApplication.getApplication().isChange());
                 toast.setText(getResources().getString(R.string.message_button_green));
                 toast.show();
                 break;
             case R.id.button_install_blue:
                 WallpaperApplication.getApplication().setColor(WallpaperApplication.BLUE);
                 WallpaperLib.setSettings(   WallpaperApplication.getApplication().getColors(),
-                                            WallpaperApplication.getApplication().getForms());
+                                            WallpaperApplication.getApplication().getForms(),
+                        WallpaperApplication.getApplication().isChange());
                 toast.setText(getResources().getString(R.string.message_button_blue));
                 toast.show();
                 break;
             case R.id.button_install_random:
                 WallpaperApplication.getApplication().setColor(WallpaperApplication.GOLD);
                 WallpaperLib.setSettings(   WallpaperApplication.getApplication().getColors(),
-                                            WallpaperApplication.getApplication().getForms());
+                                            WallpaperApplication.getApplication().getForms(),
+                                            WallpaperApplication.getApplication().isChange());
                 toast.setText(getResources().getString(R.string.message_button_random));
                 toast.show();
                 break;
             case R.id.button_install_dynamic_uniform:
                 WallpaperApplication.getApplication().setForms(WallpaperApplication.DYNAMIC_UNIFORM);
                 WallpaperLib.setSettings(   WallpaperApplication.getApplication().getColors(),
-                                            WallpaperApplication.getApplication().getForms());
+                                            WallpaperApplication.getApplication().getForms(),
+                                            WallpaperApplication.getApplication().isChange());
                 toast.setText(getResources().getString(R.string.message_button_dynamic_uniform));
                 toast.show();
                 break;
             case R.id.button_install_dynamic_random:
                 WallpaperApplication.getApplication().setForms(WallpaperApplication.DYNAMIC_RANDOM);
                 WallpaperLib.setSettings(   WallpaperApplication.getApplication().getColors(),
-                                            WallpaperApplication.getApplication().getForms());
+                                            WallpaperApplication.getApplication().getForms(),
+                                            WallpaperApplication.getApplication().isChange());
                 toast.setText(getResources().getString(R.string.message_button_dynamic_random));
                 toast.show();
                 break;
             case R.id.button_install_static_random:
                 WallpaperApplication.getApplication().setForms(WallpaperApplication.STATIC_RANDOM);
                 WallpaperLib.setSettings(   WallpaperApplication.getApplication().getColors(),
-                                            WallpaperApplication.getApplication().getForms());
+                                            WallpaperApplication.getApplication().getForms(),
+                                            WallpaperApplication.getApplication().isChange());
                 toast.setText(getResources().getString(R.string.message_button_static_random));
+                toast.show();
+                break;
+            case R.id.button_set_change:
+                WallpaperApplication.getApplication().setIsChange();
+                WallpaperLib.setSettings(   WallpaperApplication.getApplication().getColors(),
+                                            WallpaperApplication.getApplication().getForms(),
+                                            WallpaperApplication.getApplication().isChange());
+                toast.setText(getResources().getString(R.string.message_button_set_change));
                 toast.show();
                 break;
             case R.id.button_install_wallpaper:

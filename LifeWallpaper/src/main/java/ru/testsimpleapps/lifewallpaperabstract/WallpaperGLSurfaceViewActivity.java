@@ -34,22 +34,26 @@ public class WallpaperGLSurfaceViewActivity extends GLSurfaceView {
         return true;
     }
 
-    public static void getMove(final MotionEvent event){
+    public static void getMove(final MotionEvent event) {
         // Get actions DOWN and UP touch and count them
-        switch (event.getActionMasked()){
+        switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
-            case MotionEvent.ACTION_POINTER_DOWN :
+            case MotionEvent.ACTION_POINTER_DOWN:
                 countTouch++;
                 break;
 
             case MotionEvent.ACTION_UP:
-            case MotionEvent.ACTION_POINTER_UP :
+            case MotionEvent.ACTION_POINTER_UP:
                 countTouch--;
                 break;
         }
 
         // If we have 2 touch points, then do action
-        if(countTouch >= 2)
+        if (countTouch == 2)
             WallpaperLib.action(event.getX(event.getActionIndex()), event.getY(event.getActionIndex()));
+
+        // Off/on dynamic change
+        if (countTouch == 3)
+            WallpaperApplication.getApplication().setIsChange();
     }
 }

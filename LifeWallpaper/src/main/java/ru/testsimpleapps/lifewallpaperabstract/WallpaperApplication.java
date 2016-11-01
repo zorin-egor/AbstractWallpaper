@@ -22,9 +22,12 @@ public class WallpaperApplication extends Application {
     public static final String PREFERENCES = "PREFERENCES";
     public static final String COLORS = "COLORS";
     public static final String FORMS = "FORMS";
+    public static final String CHANGE = "CHANGE";
 
     private static int CURRENT_COLOR = GREEN;
     private static int CURRENT_FORM = DYNAMIC_UNIFORM;
+    private static boolean IS_CHANGE = true;
+
     private static Context context;
     private static WallpaperApplication wallpaperApplication;
     private SharedPreferences sharedPreferences;
@@ -41,12 +44,14 @@ public class WallpaperApplication extends Application {
         sharedPreferences = getSharedPreferences(PREFERENCES, MODE_PRIVATE);
         setColor(sharedPreferences.getInt(COLORS, GREEN));
         setForms(sharedPreferences.getInt(FORMS, DYNAMIC_UNIFORM));
+        setIsChange(sharedPreferences.getBoolean(CHANGE, true));
     }
 
     public void savePreferences() {
         Log.d(WallpaperLib.TAG, this.getClass().getName().toString() + " - savePreferences");
         sharedPreferences.edit().putInt(COLORS, getColors()).commit();
         sharedPreferences.edit().putInt(FORMS, getForms()).commit();
+        sharedPreferences.edit().putBoolean(CHANGE, isChange()).commit();
     }
 
     public static Context getAppContext() {
@@ -71,5 +76,17 @@ public class WallpaperApplication extends Application {
 
     public static void setForms(int form) {
         WallpaperApplication.CURRENT_FORM = form;
+    }
+
+    public static boolean isChange() {
+        return IS_CHANGE;
+    }
+
+    public static void setIsChange(boolean isChange) {
+        IS_CHANGE = isChange;
+    }
+
+    public static void setIsChange() {
+        IS_CHANGE = IS_CHANGE? false : true;
     }
 }

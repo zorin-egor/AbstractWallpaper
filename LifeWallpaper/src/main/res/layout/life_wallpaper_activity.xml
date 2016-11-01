@@ -77,6 +77,11 @@
                 android:text="@string/button_install_wallpaper" />
             <Button
                 style="@style/ButtonCommon"
+                android:id="@+id/button_set_change"
+                android:layout_weight="1"
+                android:text="@string/button_set_change" />
+            <Button
+                style="@style/ButtonCommon"
                 android:id="@+id/button_exit"
                 android:layout_weight="1"
                 android:text="@string/button_exit" />

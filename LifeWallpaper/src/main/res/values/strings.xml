@@ -9,14 +9,16 @@
     <string name="button_blue">Blue</string>
     <string name="button_random">Random</string>
     <string name="button_install_wallpaper">Install wallpaper</string>
+    <string name="button_set_change">Is change?</string>
     <string name="button_exit">Exit</string>
     <string name="message_button_red">Red version install</string>
     <string name="message_button_green">Green version install</string>
     <string name="message_button_blue">Blue version install</string>
     <string name="message_button_random">Random version install</string>
-    <string name="message_button_dynamic_uniform">Dynamic uniform - change only points, which contains in figure.</string>
-    <string name="message_button_dynamic_random">Dynamic random - change point, arguments and radius of figure.</string>
-    <string name="message_button_static_random">Static random - change only points, which contains in figure.</string>
+    <string name="message_button_dynamic_uniform">Dynamic uniform - change point and arguments evenly.</string>
+    <string name="message_button_dynamic_random">Dynamic random - change point and arguments random.</string>
+    <string name="message_button_static_random">Static random - change only points, which contains of shape.</string>
     <string name="message_button_wallpaper">Install wallpaper</string>
+    <string name="message_button_set_change">Stop or start shape change. Only for uniform and random.</string>
     <string name="message_button_exit">Buy-buy</string>
 </resources>

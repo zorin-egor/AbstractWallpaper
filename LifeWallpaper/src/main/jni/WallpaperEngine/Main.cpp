@@ -49,6 +49,7 @@ void Main::createObjects() {
     // Get only one object for draw
     pGraphic = new Graphic(Graphic::FUNCTION_TYPE(FORM),
                            Graphic::COLOR_TYPE(COLOR),
+                           isChange,
                            10000,
                            0.0f,
                            0.0f,
@@ -81,6 +82,6 @@ void Main::action(GLfloat x, GLfloat y){
     pGraphic->setCoords(x, y);
 }
 
-void Main::setSettings(int color, int form){
-    pGraphic->setSettings(Graphic::COLOR_TYPE(color), Graphic::FUNCTION_TYPE(form));
+void Main::setSettings(int color, int form, bool isChange){
+    pGraphic->setSettings(Graphic::COLOR_TYPE(color), Graphic::FUNCTION_TYPE(form), isChange);
 }
