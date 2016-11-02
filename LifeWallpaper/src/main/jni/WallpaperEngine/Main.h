@@ -20,7 +20,9 @@ class Main {
                 COLOR(_color),
                 FORM(_form),
                 isChange(_isChange),
-                COEFFICIENT((GLfloat)_width / (GLfloat)_height)
+                COEFFICIENT((GLfloat)_width / (GLfloat)_height),
+                POINTS_COUNT(100),
+                SHAPE_RADIUS(0.35f)
         {
                 LOGI("Main();");
                 init();
@@ -52,6 +54,8 @@ class Main {
         const int HEIGHT;
         const int COLOR;
         const int FORM;
+        const int POINTS_COUNT;
+        const GLfloat SHAPE_RADIUS;
         const GLfloat COEFFICIENT;
 
         // For get the texture

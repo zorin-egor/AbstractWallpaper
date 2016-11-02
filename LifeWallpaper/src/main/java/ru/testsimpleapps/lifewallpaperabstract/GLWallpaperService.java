@@ -26,6 +26,12 @@ public abstract class GLWallpaperService extends WallpaperService {
             }
 
             @Override
+            public void onResume() {
+                super.onResume();
+                Log.d(WallpaperLib.TAG, this.getClass().toString() + " - onResume");
+            }
+
+            @Override
             public SurfaceHolder getHolder() {
                 Log.d(WallpaperLib.TAG, this.getClass().toString() + " - getHolder");
                 return getSurfaceHolder();

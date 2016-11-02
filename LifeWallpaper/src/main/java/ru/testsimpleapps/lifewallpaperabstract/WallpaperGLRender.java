@@ -10,12 +10,12 @@ public class WallpaperGLRender implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-        Log.d(WallpaperLib.TAG, this.getClass().toString() + " - onSurfaceCreated");
+        Log.d(WallpaperLib.TAG, this.getClass().toString() + " - onSurfaceCreated; THREAD: " + Thread.currentThread().getId());
     }
 
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
-        Log.d(WallpaperLib.TAG, this.getClass().toString() + " - onSurfaceChanged");
+        Log.d(WallpaperLib.TAG, this.getClass().toString() + " - onSurfaceChanged; THREAD: " + Thread.currentThread().getId());
         WallpaperLib.destroyPrevious();
         WallpaperLib.init(  WallpaperApplication.getAppContext().getAssets(),
                             new PNGManager(WallpaperApplication.getAppContext().getAssets()),

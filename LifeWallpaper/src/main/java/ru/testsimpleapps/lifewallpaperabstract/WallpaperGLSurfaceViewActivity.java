@@ -31,6 +31,12 @@ public class WallpaperGLSurfaceViewActivity extends GLSurfaceView {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(WallpaperLib.TAG, this.getClass().toString() + " - onResume");
+    }
+
+    @Override
     public boolean onTouchEvent(final MotionEvent event) {
         getMove(event);
         return true;
