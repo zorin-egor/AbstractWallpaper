@@ -21,8 +21,10 @@ class Main {
                 FORM(_form),
                 isChange(_isChange),
                 COEFFICIENT((GLfloat)_width / (GLfloat)_height),
-                POINTS_COUNT(100),
-                SHAPE_RADIUS(0.35f)
+                POINTS_COUNT(10000),
+                SHAPE_RADIUS(0.35f),
+                pGraphic(NULL),
+                pTextures(NULL)
         {
                 LOGI("Main();");
                 init();
@@ -31,8 +33,8 @@ class Main {
 
         ~Main(){
                 LOGI("~Main();");
-                //glDeleteProgram(programGraphic);
                 delete pGraphic;
+                delete pTextures;
         }
 
         void step();
@@ -59,7 +61,7 @@ class Main {
         const GLfloat COEFFICIENT;
 
         // For get the texture
-        ManageTexture * textures;
+        ManageTexture * pTextures;
         // Programs
         GLuint programGraphic;
         // Sprites

@@ -27,12 +27,9 @@ class ManageTexture {
             }
 
         ~ManageTexture(){
-            //LOGI("~ManageTexture");
+            LOGI("ManageTexture::~ManageTexture");
             for(int i = 0; i < TEXTURE_TYPE::SIZE; i++)
                 delete arrayTextures[i];
-
-            glDeleteTextures(TEXTURE_TYPE::SIZE, texturesIDs);
-            checkGLError("ManageTexture::~ManageTexture - glDeleteTextures");
 
             delete [] texturesIDs;
             delete [] arrayTextures;
@@ -45,7 +42,7 @@ class ManageTexture {
             Texture() : pixels(NULL), width(0), height(0){}
             Texture(char * p, int w, int h) : pixels(p), width(w), height(h){}
             ~Texture(){
-                //LOGI("~Texture");
+                LOGI("Texture::~Texture");
                 if(pixels){
                     delete [] pixels;
                     pixels = NULL;
@@ -82,7 +79,7 @@ class ManageTexture {
         jmethodID pmGetPixelsId;
 
         Texture ** arrayTextures;
-        const char * TEXTURE_PATH = "textures/";
+        const char * TEXTURE_PATH = "pTextures/";
         GLuint * texturesIDs;
 };
 

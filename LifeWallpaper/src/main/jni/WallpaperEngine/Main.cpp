@@ -44,7 +44,7 @@ bool Main::init(){
 
 void Main::createObjects() {
     // Get slots of img
-    textures = new ManageTexture(env, pngManager, assetManager);
+    pTextures = new ManageTexture(env, pngManager, assetManager);
 
     // Get only one object for draw
     pGraphic = new Graphic(Graphic::FUNCTION_TYPE(FORM),
@@ -56,7 +56,7 @@ void Main::createObjects() {
                            SHAPE_RADIUS / COEFFICIENT,
                            SHAPE_RADIUS,
                            programGraphic,
-                           textures->getTexturesPackIDs(ManageTexture::PARTICLES),
+                           pTextures->getTexturesPackIDs(ManageTexture::PARTICLES),
                            graphicAngle,
                            graphicColor,
                            graphicCenter,

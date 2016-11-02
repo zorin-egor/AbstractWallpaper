@@ -44,7 +44,7 @@ public class WallpaperApplication extends Application {
         sharedPreferences = getSharedPreferences(PREFERENCES, MODE_PRIVATE);
         setColor(sharedPreferences.getInt(COLORS, RAND));
         setForms(sharedPreferences.getInt(FORMS, DYNAMIC_UNIFORM));
-        setIsChange(sharedPreferences.getBoolean(CHANGE, true));
+        setIsChange(sharedPreferences.getBoolean(CHANGE, false));
     }
 
     public void savePreferences() {

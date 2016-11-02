@@ -47,7 +47,7 @@ class Graphic : public Render {
                                                previousActionX(0.0f),
                                                previousActionY(0.0f),
                                                STRICT_ARGUMENTS_MAX(5.0f),
-                                               STRICT_ARGUMENTS_MIN(1.0f),
+                                               STRICT_ARGUMENTS_MIN(1.1f),
                                                STRICT_SPEED_MAX(10000.0f),
                                                STRICT_SPEED_MIN(0.0f),
                                                SIZE_POINT(5.0f),
