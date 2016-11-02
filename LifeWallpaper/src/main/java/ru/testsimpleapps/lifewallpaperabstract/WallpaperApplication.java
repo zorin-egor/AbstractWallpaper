@@ -43,7 +43,7 @@ public class WallpaperApplication extends Application {
         Log.d(WallpaperLib.TAG, this.getClass().getName().toString() + " - loadPreferences");
         sharedPreferences = getSharedPreferences(PREFERENCES, MODE_PRIVATE);
         setColor(sharedPreferences.getInt(COLORS, RAND));
-        setForms(sharedPreferences.getInt(FORMS, DYNAMIC_UNIFORM));
+        setForms(sharedPreferences.getInt(FORMS, STATIC_RANDOM));
         setIsChange(sharedPreferences.getBoolean(CHANGE, false));
     }
 
