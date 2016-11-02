@@ -8,7 +8,7 @@ import android.util.Log;
 public class WallpaperApplication extends Application {
 
     // For colors
-    public static final int GOLD = 0;
+    public static final int RAND = 0;
     public static final int RED = 1;
     public static final int GREEN = 2;
     public static final int BLUE = 3;
@@ -42,7 +42,7 @@ public class WallpaperApplication extends Application {
     private void loadPreferences() {
         Log.d(WallpaperLib.TAG, this.getClass().getName().toString() + " - loadPreferences");
         sharedPreferences = getSharedPreferences(PREFERENCES, MODE_PRIVATE);
-        setColor(sharedPreferences.getInt(COLORS, GREEN));
+        setColor(sharedPreferences.getInt(COLORS, RAND));
         setForms(sharedPreferences.getInt(FORMS, DYNAMIC_UNIFORM));
         setIsChange(sharedPreferences.getBoolean(CHANGE, true));
     }

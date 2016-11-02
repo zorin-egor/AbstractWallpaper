@@ -174,7 +174,6 @@ void Graphic::init(){
     GLuint randRow = Methods::getStrictRandom(101);
     GLfloat deltaStartPositions = 0.0f;
     // For uniform buffer settings
-    GLfloat upperStrictUniform;
     GLfloat startUniformPositionX;
     GLfloat startUniformPositionY;
     GLfloat endsUniformPositionX;
@@ -275,7 +274,7 @@ void Graphic::init(){
                 arrayColor[i * 4 + 3] = 1.0f;
             }
             break;
-        case GOLD:
+        case RAND:
             for(int i = 0; i < count; i++){
                 if(i > partOfCount){
                     redColor = greenColor = blueColor = 1.0f;
@@ -386,10 +385,10 @@ void Graphic::setCoords(GLfloat x, GLfloat y){
     }
 }
 
-void Graphic::setSettings(COLOR_TYPE color, FUNCTION_TYPE type, bool isChange){
+void Graphic::setSettings(COLOR_TYPE color, FUNCTION_TYPE type){
     this->color = color;
     this->type = type;
-    this->isChange = isChange;
+
 
     // Wait while, programs end work
     while(this->isProgramWork);
@@ -401,4 +400,8 @@ void Graphic::setSettings(COLOR_TYPE color, FUNCTION_TYPE type, bool isChange){
     init();
     // Program can draw
     isVisible = true;
+}
+
+void Graphic::setIsChange(bool isChange){
+    this->isChange = isChange;
 }

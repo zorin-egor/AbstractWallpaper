@@ -16,8 +16,12 @@ extern "C" {
         wallpapersObjects.push(wallpaper);
     }
 
-    JNIEXPORT void JNICALL Java_ru_testsimpleapps_lifewallpaperabstract_WallpaperLib_setSettings(JNIEnv *env, jclass type, jint color, jint form, jboolean isChange){
-        wallpaper->setSettings(color, form, isChange);
+    JNIEXPORT void JNICALL Java_ru_testsimpleapps_lifewallpaperabstract_WallpaperLib_setSettings(JNIEnv *env, jclass type, jint color, jint form){
+        wallpaper->setSettings(color, form);
+    }
+
+    JNIEXPORT void JNICALL Java_ru_testsimpleapps_lifewallpaperabstract_WallpaperLib_setIsChange(JNIEnv *env, jclass type, jboolean isChange){
+        wallpaper->setIsChange(isChange);
     }
 
     JNIEXPORT void JNICALL Java_ru_testsimpleapps_lifewallpaperabstract_WallpaperLib_step(JNIEnv * env, jobject obj){

@@ -29,12 +29,13 @@ class Main {
 
         ~Main(){
                 LOGI("~Main();");
-                glDeleteProgram(programGraphic);
+                //glDeleteProgram(programGraphic);
                 delete pGraphic;
         }
 
         void step();
-        void setSettings(int color, int form, bool isChange);
+        void setSettings(int color, int form);
+        void setIsChange(bool isChange);
         void action(GLfloat x, GLfloat y);
 
     private:

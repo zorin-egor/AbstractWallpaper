@@ -13,6 +13,7 @@ public class WallpaperLib {
     public static native void step();
     public static native void destroyPrevious();
     public static native void action(float x, float y);
-    public static native void setSettings(int color, int form, boolean isChange);
+    public static native void setSettings(int color, int form);
+    public static native void setIsChange(boolean isChange);
     public static native void exit();
 }

@@ -9,10 +9,12 @@ import android.view.MotionEvent;
 public class WallpaperGLSurfaceViewActivity extends GLSurfaceView {
 
     private static int countTouch;
+    private Context context;
     private static WallpaperGLSurfaceViewActivity wallpaperGLSurfaceViewActivity;
 
     public WallpaperGLSurfaceViewActivity(Context context, AttributeSet attrs){
         super(context, attrs);
+        this.context = context;
         wallpaperGLSurfaceViewActivity = this;
         countTouch = 0;
     }
@@ -40,6 +42,16 @@ public class WallpaperGLSurfaceViewActivity extends GLSurfaceView {
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_POINTER_DOWN:
                 countTouch++;
+
+                // Off/on dynamic change
+                if (countTouch >= 3){
+                    WallpaperApplication.getApplication().setIsChange();
+                    WallpaperLib.setIsChange(WallpaperApplication.getApplication().isChange());
+                    LifeWallpaperActivity.TOAST_OBJ.setText(WallpaperApplication.getAppContext().getResources().getString(R.string.message_button_set_change_points) + " " +
+                                                            WallpaperApplication.getApplication().isChange());
+                    LifeWallpaperActivity.TOAST_OBJ.show();
+                }
+
                 break;
 
             case MotionEvent.ACTION_UP:
@@ -51,9 +63,5 @@ public class WallpaperGLSurfaceViewActivity extends GLSurfaceView {
         // If we have 2 touch points, then do action
         if (countTouch == 2)
             WallpaperLib.action(event.getX(event.getActionIndex()), event.getY(event.getActionIndex()));
-
-        // Off/on dynamic change
-        if (countTouch == 3)
-            WallpaperApplication.getApplication().setIsChange();
     }
 }

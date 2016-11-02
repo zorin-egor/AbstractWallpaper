@@ -9,7 +9,7 @@
 class Graphic : public Render {
     public:
         static const enum FUNCTION_TYPE { DYNAMIC_UNIFORM = 0, DYNAMIC_RANDOM = 1, STATIC_RANDOM = 2, HYPOCYCLOID = 3, EPICYCLOID = 4 };
-        static const enum COLOR_TYPE { GOLD = 0, RED = 1, GREEN = 2, BLUE = 3 };
+        static const enum COLOR_TYPE { RAND = 0, RED = 1, GREEN = 2, BLUE = 3 };
 
         Graphic(FUNCTION_TYPE _type,
                 COLOR_TYPE _color,
@@ -52,7 +52,7 @@ class Graphic : public Render {
                                                STRICT_SPEED_MIN(0.0f),
                                                SIZE_POINT(5.0f),
                                                DARGUMENT_ARRAY_SPEED(0.000001f),
-                                               STRICT_TOUCH_CHANGE(1000.0f)
+                                               STRICT_TOUCH_CHANGE(5000.0f)
     {
         LOGI("Graphic::Graphic()");
         isVisible = true;
@@ -68,7 +68,8 @@ class Graphic : public Render {
 
     void render();
     void setCoords(GLfloat x, GLfloat y);
-    void setSettings(COLOR_TYPE color, FUNCTION_TYPE type, bool isChange);
+    void setSettings(COLOR_TYPE color, FUNCTION_TYPE type);
+    void setIsChange(bool isChange);
 
     void setVisible(bool _isVisible){
         isVisible = _isVisible;

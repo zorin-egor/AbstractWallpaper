@@ -73,7 +73,7 @@
             <Button
                 style="@style/ButtonCommon"
                 android:id="@+id/button_install_wallpaper"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="@string/button_install_wallpaper" />
             <Button
                 style="@style/ButtonCommon"
@@ -83,7 +83,7 @@
             <Button
                 style="@style/ButtonCommon"
                 android:id="@+id/button_exit"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="@string/button_exit" />
         </LinearLayout>
     </LinearLayout>

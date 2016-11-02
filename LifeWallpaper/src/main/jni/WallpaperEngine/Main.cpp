@@ -82,6 +82,10 @@ void Main::action(GLfloat x, GLfloat y){
     pGraphic->setCoords(x, y);
 }
 
-void Main::setSettings(int color, int form, bool isChange){
-    pGraphic->setSettings(Graphic::COLOR_TYPE(color), Graphic::FUNCTION_TYPE(form), isChange);
+void Main::setSettings(int color, int form){
+    pGraphic->setSettings(Graphic::COLOR_TYPE(color), Graphic::FUNCTION_TYPE(form));
+}
+
+void Main::setIsChange(bool isChange){
+    pGraphic->setIsChange(isChange);
 }
