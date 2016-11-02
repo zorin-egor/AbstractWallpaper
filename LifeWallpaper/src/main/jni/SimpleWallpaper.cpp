@@ -8,7 +8,7 @@ std::queue<Main *> wallpapersObjects;
 
 extern "C" {
 
-    JNIEXPORT void JNICALL Java_ru_testsimpleapps_lifewallpaperabstract_WallpaperLib_init(JNIEnv * env, jobject obj,
+    JNIEXPORT void JNICALL Java_ru_testsimpleapps_lifewallpaperabstract_WallpaperLib_init(JNIEnv * env, jclass type,
                                                                                           jobject assetManager, jobject pngManager,
                                                                                           jint width, jint height, jint color, jint form, jboolean isChange){
         LOGI("INIT: H: %d; W: %d; C: %d; F: %d;", height, width, color, form);
@@ -24,7 +24,7 @@ extern "C" {
         wallpaper->setIsChange(isChange);
     }
 
-    JNIEXPORT void JNICALL Java_ru_testsimpleapps_lifewallpaperabstract_WallpaperLib_step(JNIEnv * env, jobject obj){
+    JNIEXPORT void JNICALL Java_ru_testsimpleapps_lifewallpaperabstract_WallpaperLib_step(JNIEnv * env, jclass type){
         if(wallpaper != NULL)
             wallpaper->step();
     }
@@ -34,7 +34,7 @@ extern "C" {
             wallpaper->action(x, y);
     }
 
-    JNIEXPORT void JNICALL Java_ru_testsimpleapps_lifewallpaperabstract_WallpaperLib_destroyPrevious(JNIEnv * env, jobject obj){
+    JNIEXPORT void JNICALL Java_ru_testsimpleapps_lifewallpaperabstract_WallpaperLib_destroyPrevious(JNIEnv * env, jclass type){
         LOGI("DESTROY_PREVIOUS; SIZE: %d;", wallpapersObjects.size());
         if(wallpapersObjects.size() > 1){
             delete wallpapersObjects.front();

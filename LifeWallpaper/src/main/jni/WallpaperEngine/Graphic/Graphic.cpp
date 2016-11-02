@@ -389,7 +389,6 @@ void Graphic::setSettings(COLOR_TYPE color, FUNCTION_TYPE type){
     this->color = color;
     this->type = type;
 
-
     // Wait while, programs end work
     while(this->isProgramWork);
     // Don't draw program
