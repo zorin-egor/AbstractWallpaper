@@ -62,6 +62,10 @@ class Graphic : public Render {
 
     virtual ~Graphic(){
         LOGI("Graphic::~Graphic()");
+        // Off attributes
+//        glDisableVertexAttribArray(starsAngle);
+//        glDisableVertexAttribArray(starColor);
+
         delete [] arrayPosition;
         delete [] arrayColor;
     }

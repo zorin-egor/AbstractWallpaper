@@ -28,6 +28,8 @@ class ManageTexture {
 
         ~ManageTexture(){
             LOGI("ManageTexture::~ManageTexture");
+            //glDeleteTextures(TEXTURE_TYPE::SIZE, texturesIDs);
+
             for(int i = 0; i < TEXTURE_TYPE::SIZE; i++)
                 delete arrayTextures[i];
 

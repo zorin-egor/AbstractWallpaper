@@ -33,6 +33,8 @@ class Main {
 
         ~Main(){
                 LOGI("~Main();");
+                //glUseProgram(0);
+                //glDeleteProgram(programGraphic);
                 delete pGraphic;
                 delete pTextures;
         }
