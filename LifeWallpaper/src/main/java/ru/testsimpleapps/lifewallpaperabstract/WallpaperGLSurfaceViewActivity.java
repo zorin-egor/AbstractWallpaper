@@ -3,37 +3,18 @@ package ru.testsimpleapps.lifewallpaperabstract;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
+import android.view.SurfaceHolder;
 
 public class WallpaperGLSurfaceViewActivity extends GLSurfaceView {
 
     private static int countTouch;
     private Context context;
-    private static WallpaperGLSurfaceViewActivity wallpaperGLSurfaceViewActivity;
 
     public WallpaperGLSurfaceViewActivity(Context context, AttributeSet attrs){
         super(context, attrs);
         this.context = context;
-        wallpaperGLSurfaceViewActivity = this;
         countTouch = 0;
-    }
-
-    public static WallpaperGLSurfaceViewActivity getWallpaperGLSurfaceViewActivity(){
-        return WallpaperGLSurfaceViewActivity.wallpaperGLSurfaceViewActivity;
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.d(WallpaperLib.TAG, this.getClass().toString() + " - onPause");
-        WallpaperLib.destroyPrevious();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.d(WallpaperLib.TAG, this.getClass().toString() + " - onResume");
     }
 
     @Override
@@ -53,9 +34,9 @@ public class WallpaperGLSurfaceViewActivity extends GLSurfaceView {
                 if (countTouch >= 3){
                     WallpaperApplication.getApplication().setIsChange();
                     WallpaperLib.setIsChange(WallpaperApplication.getApplication().isChange());
-                    LifeWallpaperActivity.TOAST_OBJ.setText(WallpaperApplication.getAppContext().getResources().getString(R.string.message_button_set_change_points) + " " +
+                    WallpaperActivity.TOAST_OBJ.setText(WallpaperApplication.getAppContext().getResources().getString(R.string.message_button_set_change_points) + " " +
                                                             WallpaperApplication.getApplication().isChange());
-                    LifeWallpaperActivity.TOAST_OBJ.show();
+                    WallpaperActivity.TOAST_OBJ.show();
                 }
 
                 break;

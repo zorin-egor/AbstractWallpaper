@@ -18,15 +18,23 @@ public class WallpaperApplication extends Application {
     public static final int DYNAMIC_RANDOM = 1;
     public static final int STATIC_RANDOM = 2;
 
+    // Default particlees
+    public static final int DEFAULT_PARTICLES = 10000;
+    public static final int DEFAULT_UP = 30000;
+    public static final int DEFAULT_DOWN = 5000;
+    public static final int DEFAULT_STEP = 1000;
+
     // Preferences
     public static final String PREFERENCES = "PREFERENCES";
     public static final String COLORS = "COLORS";
     public static final String FORMS = "FORMS";
     public static final String CHANGE = "CHANGE";
+    public static final String PARTICLES = "PARTICLES";
 
     private static int CURRENT_COLOR = GREEN;
     private static int CURRENT_FORM = DYNAMIC_UNIFORM;
     private static boolean IS_CHANGE = true;
+    private static int PARTICLES_COUNT = DEFAULT_PARTICLES;
 
     private static Context context;
     private static WallpaperApplication wallpaperApplication;
@@ -45,6 +53,7 @@ public class WallpaperApplication extends Application {
         setColor(sharedPreferences.getInt(COLORS, RAND));
         setForms(sharedPreferences.getInt(FORMS, STATIC_RANDOM));
         setIsChange(sharedPreferences.getBoolean(CHANGE, false));
+        setParticlesCount(sharedPreferences.getInt(PARTICLES, DEFAULT_PARTICLES));
     }
 
     public void savePreferences() {
@@ -52,6 +61,7 @@ public class WallpaperApplication extends Application {
         sharedPreferences.edit().putInt(COLORS, getColors()).commit();
         sharedPreferences.edit().putInt(FORMS, getForms()).commit();
         sharedPreferences.edit().putBoolean(CHANGE, isChange()).commit();
+        sharedPreferences.edit().putInt(PARTICLES, getParticlesCount()).commit();
     }
 
     public static Context getAppContext() {
@@ -88,5 +98,29 @@ public class WallpaperApplication extends Application {
 
     public static void setIsChange() {
         IS_CHANGE = IS_CHANGE? false : true;
+    }
+
+    public static int getParticlesCount() {
+        return PARTICLES_COUNT;
+    }
+
+    private static void setParticlesCount(int particlesCount) {
+        PARTICLES_COUNT = particlesCount;
+    }
+
+    public static boolean increaseParticlesCount(){
+        if(PARTICLES_COUNT < DEFAULT_UP) {
+            PARTICLES_COUNT += DEFAULT_STEP;
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean decreaseParticlesCount(){
+        if(PARTICLES_COUNT > DEFAULT_DOWN) {
+            PARTICLES_COUNT -= DEFAULT_STEP;
+            return true;
+        }
+        return false;
     }
 }

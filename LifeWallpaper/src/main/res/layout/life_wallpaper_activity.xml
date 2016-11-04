@@ -7,12 +7,34 @@
         android:id="@+id/gl_surfaces_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="top|center_horizontal"
-        android:gravity="center"
-        android:text="@string/hint_dynamic_change"/>
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:orientation="horizontal">
+            <Button
+                style="@style/ButtonCommon"
+                android:id="@+id/button_particles_increase"
+                android:layout_weight="1"
+                android:text="@string/button_particles_increase" />
+            <Button
+                style="@style/ButtonCommon"
+                android:id="@+id/button_particles_decrease"
+                android:layout_weight="1"
+                android:text="@string/button_particles_decrease" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:gravity="center"
+            android:text="@string/hint_dynamic_change"/>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -74,7 +96,8 @@
                 style="@style/ButtonCommon"
                 android:id="@+id/button_install_wallpaper"
                 android:layout_weight="2"
-                android:text="@string/button_install_wallpaper" />
+                android:text="@string/button_install_wallpaper"
+                android:background="@drawable/button_background_yellow"/>
             <Button
                 style="@style/ButtonCommon"
                 android:id="@+id/button_set_change"

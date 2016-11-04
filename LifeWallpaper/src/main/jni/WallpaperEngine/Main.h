@@ -11,34 +11,22 @@
 class Main {
 
     public:
-        Main(   JNIEnv * _env, jobject _assetManager, jobject _pngManager, jint _width, jint _height, jint _color, jint _form, jboolean _isChange) :
+        Main(   JNIEnv * _env, jobject _assetManager, jobject _pngManager) :
                 env(_env),
                 assetManager(_assetManager),
                 pngManager(_pngManager),
-                WIDTH(_width),
-                HEIGHT(_height),
-                COLOR(_color),
-                FORM(_form),
-                isChange(_isChange),
-                COEFFICIENT((GLfloat)_width / (GLfloat)_height),
-                POINTS_COUNT(10000),
+                POINTS_COUNT(100),
                 SHAPE_RADIUS(0.35f),
                 pGraphic(NULL),
-                pTextures(NULL)
+                pTextures(NULL),
+                isRenderNow(false)
         {
                 LOGI("Main();");
                 init();
-                createObjects();
         }
 
-        ~Main(){
-                LOGI("~Main();");
-                //glUseProgram(0);
-                //glDeleteProgram(programGraphic);
-                delete pGraphic;
-                delete pTextures;
-        }
-
+        ~Main();
+        void onChange(int width, int height, int color, int form, bool isChange, int count);
         void step();
         void setSettings(int color, int form);
         void setIsChange(bool isChange);
@@ -47,6 +35,7 @@ class Main {
     private:
         bool init();
         void createObjects();
+        void deleteObjects();
 
         // Java references
         JNIEnv * env;
@@ -54,13 +43,15 @@ class Main {
         jobject assetManager;
 
         // Screen
-        const int WIDTH;
-        const int HEIGHT;
-        const int COLOR;
-        const int FORM;
+        int width;
+        int height;
+        int color;
+        int form;
+        int count;
+        float coefficient;
+        // Object settings
         const int POINTS_COUNT;
         const GLfloat SHAPE_RADIUS;
-        const GLfloat COEFFICIENT;
 
         // For get the texture
         ManageTexture * pTextures;
@@ -80,6 +71,8 @@ class Main {
         Graphic * pGraphic;
         // Dynamically change
         bool isChange;
+        // For check render now or not
+        bool isRenderNow;
 };
 
 #endif

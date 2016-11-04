@@ -2,4 +2,6 @@
 <resources>
     <color name="button_common_light">#87ffffff</color>
     <color name="button_common_dark">#87585858</color>
+    <color name="button_common_yellow_light">#87fff200</color>
+    <color name="button_common_yellow_dark">#87817d00</color>
 </resources>

@@ -1,5 +1,15 @@
 #include "Main.h"
 
+Main::~Main(){
+    LOGI("~Main();");
+    // Java delete GL data itself?
+    // Because GL context lost!
+    //glUseProgram(0);
+    //glDeleteProgram(programGraphic);
+    delete pTextures;
+    deleteObjects();
+}
+
 bool Main::init(){
     // Compiling and link program
     programGraphic = MakeShaders::createProgram(MakeShaders::v_star_shader, MakeShaders::f_star_shader);
@@ -36,24 +46,39 @@ bool Main::init(){
     glEnable(GL_BLEND);
     checkGLError("Main::init - glEnable");
 
-    // Set viewport
-    glViewport(0, 0, WIDTH, HEIGHT);
-    checkGLError("Main::init - glViewport");
-    return true;
-}
-
-void Main::createObjects() {
     // Get slots of img
     pTextures = new ManageTexture(env, pngManager, assetManager);
 
+    return true;
+}
+
+void Main::onChange(int width, int height, int color, int form, bool isChange, int count){
+    this->width = width > 0? width : this->width;
+    this->height = height > 0? height : this->height;
+    this->color = color >= 0? color : this->color;
+    this->form = form >= 0? form : this->form;
+    this->isChange = isChange;
+    this->count = (count >= 100 && count <= 30000)? count : width + height > 1500? POINTS_COUNT + 5000 : POINTS_COUNT;
+    coefficient = (float) this->width / (float) this->height;
+
+    // Recreate view objects with new settings
+    deleteObjects();
+    createObjects();
+
+    // Set viewport
+    glViewport(0, 0, width, height);
+    checkGLError("Main::onChange - glViewport");
+}
+
+void Main::createObjects() {
     // Get only one object for draw
-    pGraphic = new Graphic(Graphic::FUNCTION_TYPE(FORM),
-                           Graphic::COLOR_TYPE(COLOR),
+    pGraphic = new Graphic(Graphic::FUNCTION_TYPE(form),
+                           Graphic::COLOR_TYPE(color),
                            isChange,
-                           POINTS_COUNT,
+                           count,
                            0.0f,
                            0.0f,
-                           SHAPE_RADIUS / COEFFICIENT,
+                           SHAPE_RADIUS / coefficient,
                            SHAPE_RADIUS,
                            programGraphic,
                            pTextures->getTexturesPackIDs(ManageTexture::PARTICLES),
@@ -64,6 +89,13 @@ void Main::createObjects() {
                            graphicArguments,
                            graphicSize,
                            graphicTotalDeltaSpeed);
+}
+
+void Main::deleteObjects(){
+    if(pGraphic != NULL){
+        delete pGraphic;
+        pGraphic = NULL;
+    }
 }
 
 void Main::step(){

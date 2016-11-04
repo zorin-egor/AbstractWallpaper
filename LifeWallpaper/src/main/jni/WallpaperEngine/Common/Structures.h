@@ -303,7 +303,7 @@ class Matrix {
             return textureCoords;
         }
 
-        // Set position coordinates with WIDTH and WIDTH
+        // Set position coordinates with width and width
         static GLfloat * setVerticesCoords(float x, float y, float width, float height, GLfloat * verticesCoords){
 
             // Top left

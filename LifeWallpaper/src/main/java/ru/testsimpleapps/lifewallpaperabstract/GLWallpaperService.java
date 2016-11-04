@@ -13,32 +13,18 @@ public abstract class GLWallpaperService extends WallpaperService {
 
     public class GLEngine extends Engine {
         class WallpaperGLSurfaceView extends GLSurfaceView {
-
             WallpaperGLSurfaceView(Context context) {
                 super(context);
             }
 
             @Override
-            public void onPause() {
-                super.onPause();
-                Log.d(WallpaperLib.TAG, this.getClass().toString() + " - onPause");
-                WallpaperLib.destroyPrevious();
-            }
-
-            @Override
-            public void onResume() {
-                super.onResume();
-                Log.d(WallpaperLib.TAG, this.getClass().toString() + " - onResume");
-            }
-
-            @Override
             public SurfaceHolder getHolder() {
-                Log.d(WallpaperLib.TAG, this.getClass().toString() + " - getHolder");
+                Log.d(WallpaperLib.TAG, this.getClass().toString() + " - getHolder; THREAD: " + Thread.currentThread().getId());
                 return getSurfaceHolder();
             }
 
             public void onDestroy() {
-                Log.d(WallpaperLib.TAG, this.getClass().toString() + " - onDestroy");
+                Log.d(WallpaperLib.TAG, this.getClass().toString() + " - onDestroy; THREAD: " + Thread.currentThread().getId());
                 super.onDetachedFromWindow();
             }
         }

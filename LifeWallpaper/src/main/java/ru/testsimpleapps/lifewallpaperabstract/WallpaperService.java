@@ -15,7 +15,8 @@ public class WallpaperService extends GLWallpaperOpenService {
     public void onDestroy() {
         super.onDestroy();
         Log.d(WallpaperLib.TAG, this.getClass().toString() + " - onDestroy");
-        WallpaperLib.exit();
+        if(!WallpaperActivity.isActivity())
+            WallpaperLib.exit();
         openGLES2Engine = null;
     }
 }
