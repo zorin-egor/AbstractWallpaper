@@ -27,7 +27,7 @@ model {
         }
 
         ndk {
-            platformVersion = 9
+            platformVersion = 10
             moduleName = 'SimpleWallpaper'
             toolchain = 'clang'
             stl = 'gnustl_static'
