@@ -22,12 +22,12 @@ model {
             applicationId = "ru.testsimpleapps.lifewallpaperabstract"
             minSdkVersion.apiLevel = 10
             targetSdkVersion.apiLevel = 24
-            versionCode = 7
-            versionName = "1.0.6"
+            versionCode = 8
+            versionName = "1.0.7"
         }
 
         ndk {
-            platformVersion = 10
+            platformVersion = 9
             moduleName = 'SimpleWallpaper'
             toolchain = 'clang'
             stl = 'gnustl_static'
