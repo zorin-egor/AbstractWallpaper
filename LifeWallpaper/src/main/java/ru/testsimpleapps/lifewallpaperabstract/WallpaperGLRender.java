@@ -7,6 +7,12 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 public class WallpaperGLRender implements GLSurfaceView.Renderer {
+    // Render work in separate thread!
+    // Every time create new thread
+    // With delete GL context - delete GL data
+    // But lib data, we need delete every time before create GL data for new context
+    // GL. Create program, binding, use, delete and etc create in CURRENT context(thread)
+    // If call GL functions from other thread, without context - it will lead to errors!
 
     private static volatile boolean isNeedChange = false;
 
