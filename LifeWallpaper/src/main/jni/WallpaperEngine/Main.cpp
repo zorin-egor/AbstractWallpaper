@@ -58,7 +58,7 @@ void Main::onChange(int width, int height, int color, int form, bool isChange, i
     this->color = color >= 0? color : this->color;
     this->form = form >= 0? form : this->form;
     this->isChange = isChange;
-    this->count = (count >= 100 && count <= 30000)? count : width + height > 1500? POINTS_COUNT + 5000 : POINTS_COUNT;
+    this->count = (count >= 100 && count <= 50000)? count : width + height > 1500? POINTS_COUNT + 5000 : POINTS_COUNT;
     coefficient = (float) this->width / (float) this->height;
 
     // Recreate view objects with new settings

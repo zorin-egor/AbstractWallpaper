@@ -26,4 +26,9 @@
     <string name="message_button_exit">Buy-buy</string>
     <string name="message_button_install_error">Sorry! :( Can\'t install wallpaper.</string>
     <string name="message_button_particles">Particles:</string>
+
+    <string name="acra_crush_title">Abstract wallpaper. Internal application error.</string>
+    <string name="acra_crush_message_text">If you want, you can send the crash report to the developer by email.</string>
+    <string name="acra_crush_message_comment">Additional information.</string>
+    <string name="acra_crush_ok">Send crash report by email.</string>
 </resources>

@@ -52,7 +52,7 @@ class Graphic : public Render {
                                                STRICT_SPEED_MIN(0.0f),
                                                SIZE_POINT(5.0f),
                                                DARGUMENT_ARRAY_SPEED(0.000001f),
-                                               STRICT_TOUCH_CHANGE(5000.0f)
+                                               STRICT_TOUCH_CHANGE(10000.0f)
     {
         LOGI("Graphic::Graphic()");
         isVisible = true;

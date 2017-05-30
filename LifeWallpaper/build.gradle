@@ -22,8 +22,8 @@ model {
             applicationId = "ru.testsimpleapps.lifewallpaperabstract"
             minSdkVersion.apiLevel = 10
             targetSdkVersion.apiLevel = 24
-            versionCode = 8
-            versionName = "1.0.7"
+            versionCode = 9
+            versionName = "1.0.8"
         }
 
         ndk {
@@ -49,6 +49,10 @@ model {
                 proguardFiles.add(file("proguard-rules.pro"))
                 signingConfig = $("android.signingConfigs.signRelease")
             }
+        }
+
+        dependencies {
+            compile 'ch.acra:acra:4.9.1'
         }
     }
 
