@@ -1,6 +1,6 @@
 #include "Graphic.h"
 
-const GLfloat Graphic::STATIC_FIGURES[106][4] = {{4.066366f, 3.216887f, 3.216887f, 4.066366f },
+const GLfloat Graphic::STATIC_FIGURES[107][4] = {{4.066366f, 3.216887f, 3.216887f, 4.066366f },
                                                  {3.052000f, 5.706000f, 0.410000f, 5.570000f },
                                                  {0.799000f, 4.739000f, 3.516000f, 5.549000f },
                                                  {1.115000f, 1.653000f, 4.792000f, 2.859000f },
@@ -100,12 +100,13 @@ const GLfloat Graphic::STATIC_FIGURES[106][4] = {{4.066366f, 3.216887f, 3.216887
                                                  { 3.290000f, 4.000000f, 3.790000f, 2.095000f },
                                                  { 3.000000f, 3.170000f, 4.630000f, 2.435000f },
                                                  { 0.230000f, 5.910000f, 0.875000f, 0.790000f },
-                                                 {4.500000f, 1.745000f, 2.570000f, 3.445000f },
-                                                 {3.216887f, 4.066366f, 3.216887f, 4.066366f },
-                                                 {1.247753f, 3.249805f, 1.247753f, 3.249805f },
-                                                 {0.956997f, 2.629469f, 0.956997f, 2.629469f },
-                                                 {4.216887f, 4.216887f, 5.066366f, 5.066366f },
-                                                 {1.712899f, 2.163092f, 1.712899f, 2.163092f } };
+                                                 { 4.500000f, 1.745000f, 2.570000f, 3.445000f },
+                                                 { 3.216887f, 4.066366f, 3.216887f, 4.066366f },
+                                                 { 1.247753f, 3.249805f, 1.247753f, 3.249805f },
+                                                 { 0.956997f, 2.629469f, 0.956997f, 2.629469f },
+                                                 { 4.216887f, 4.216887f, 5.066366f, 5.066366f },
+                                                 { 4.283176f, 3.518178f, 3.683177f, 3.668177f },
+                                                 { 1.712899f, 2.163092f, 1.712899f, 2.163092f } };
 
 void Graphic::render() {
     //LOGI("Graphic::render(); Cx: %f; Cy: %f; Cc: %d; Rx: %f; Ry: %f;", CENTER_X, CENTER_Y, count, radius[0], radius[1]);
@@ -171,7 +172,7 @@ void Graphic::init(){
     // Default strict
     Methods::fillArray(maxStrictArgument, 5.0f, SIZE_ARRAYS);
     // For static type
-    GLuint randRow = Methods::getStrictRandom(101);
+    GLuint randRow = Methods::getStrictRandom(107);
     GLfloat deltaStartPositions = 0.0f;
     // For uniform buffer settings
     GLfloat startUniformPositionX;
@@ -331,8 +332,8 @@ void Graphic::setValues(){
         }
     }
 
-    //LOGI("Graphic::setValues - ARGS(); %ff, %ff, %ff, %ff", arguments[0], arguments[1], arguments[2], arguments[3]);
-    //LOGI("Graphic::setValues - DELTA(); %ff, %ff, %ff, %ff", dArgumentsTransformSpeed[0], dArgumentsTransformSpeed[1], dArgumentsTransformSpeed[2], dArgumentsTransformSpeed[3]);
+    LOGI("Graphic::setValues - ARGS(); %ff, %ff, %ff, %ff", arguments[0], arguments[1], arguments[2], arguments[3]);
+    LOGI("Graphic::setValues - DELTA(); %ff, %ff, %ff, %ff", dArgumentsTransformSpeed[0], dArgumentsTransformSpeed[1], dArgumentsTransformSpeed[2], dArgumentsTransformSpeed[3]);
 }
 
 void Graphic::setCoords(GLfloat x, GLfloat y){

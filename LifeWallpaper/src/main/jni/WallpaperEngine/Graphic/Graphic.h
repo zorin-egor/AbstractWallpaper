@@ -116,7 +116,7 @@ private:
     const GLfloat STRICT_SPEED_MIN;
     const GLfloat STRICT_ARGUMENTS_MAX;
     const GLfloat STRICT_ARGUMENTS_MIN;
-    static const GLfloat STATIC_FIGURES[106][4];
+    static const GLfloat STATIC_FIGURES[107][4];
 
     // For dynamic change
     GLfloat previousActionX;
