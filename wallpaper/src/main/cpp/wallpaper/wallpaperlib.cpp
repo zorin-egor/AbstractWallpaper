@@ -1,59 +1,63 @@
 #include <jni.h>
-#include <queue>
-#include <Main/Main.h>
+#include <map>
+#include <Main/Wallpaper.h>
 #include <Common/LogGL.h>
 
-Main * wallpaper = NULL;
-std::queue<Main *> wallpapersObjects;
+#define JNI_METHOD(RTYPE, NAME) JNIEXPORT RTYPE JNICALL Java_ru_testsimpleapps_lifewallpaperabstract_WallpaperLib_##NAME
+
+std::map<long, Wallpaper*> oWallpapers;
 
 extern "C" {
 
-    JNIEXPORT void JNICALL Java_ru_testsimpleapps_lifewallpaperabstract_WallpaperLib_init(JNIEnv * env, jclass type, jobject assetManager, jobject pngManager){
-        LOGI("JNI::INIT");
-        wallpaper = new Main(env, assetManager, pngManager);
-        wallpapersObjects.push(wallpaper);
-    }
-
-    JNIEXPORT void JNICALL Java_ru_testsimpleapps_lifewallpaperabstract_WallpaperLib_onChange(  JNIEnv * env, jclass type,
-                                                                                                jint width, jint height, jint color, jint form, jboolean isChange, jint particles){
-        LOGI("JNI::ONCHANGE: H: %d; W: %d; C: %d; F: %d;", height, width, color, form);
-        if(wallpaper != NULL)
-            wallpaper->onChange(width, height, color, form, isChange, particles);
-    }
-
-    JNIEXPORT void JNICALL Java_ru_testsimpleapps_lifewallpaperabstract_WallpaperLib_setSettings(JNIEnv *env, jclass type, jint color, jint form){
-        if(wallpaper != NULL)
-            wallpaper->setSettings(color, form);
-    }
-
-    JNIEXPORT void JNICALL Java_ru_testsimpleapps_lifewallpaperabstract_WallpaperLib_setIsChange(JNIEnv *env, jclass type, jboolean isChange){
-        if(wallpaper != NULL)
-            wallpaper->setIsChange(isChange);
-    }
-
-    JNIEXPORT void JNICALL Java_ru_testsimpleapps_lifewallpaperabstract_WallpaperLib_step(JNIEnv * env, jclass type){
-        if(wallpaper != NULL)
-            wallpaper->step();
-    }
-
-    JNIEXPORT void JNICALL Java_ru_testsimpleapps_lifewallpaperabstract_WallpaperLib_action(JNIEnv *env, jclass type, jfloat x, jfloat y) {
-        if(wallpaper != NULL)
-            wallpaper->action(x, y);
-    }
-
-    JNIEXPORT void JNICALL Java_ru_testsimpleapps_lifewallpaperabstract_WallpaperLib_destroyPrevious(JNIEnv * env, jclass type){
-        LOGI("DESTROY_PREVIOUS; SIZE: %d;", wallpapersObjects.size());
-        if(wallpapersObjects.size() > 1){
-            delete wallpapersObjects.front();
-            wallpapersObjects.pop();
+    JNI_METHOD(void, init)(JNIEnv * env, jclass type, jint id, jobject assetManager, jobject bitmapManager) {
+        LOGI("JNI::INIT(%i)", 0);
+        if (oWallpapers.count(id) <= 0) {
+            oWallpapers[id] = new Wallpaper(env, assetManager, bitmapManager);
         }
     }
 
-    JNIEXPORT void JNICALL Java_ru_testsimpleapps_lifewallpaperabstract_WallpaperLib_exit(JNIEnv *env, jclass type) {
-        LOGI("EXIT; SIZE: %d;", wallpapersObjects.size());
-        while(!wallpapersObjects.empty()) {
-            delete wallpapersObjects.front();
-            wallpapersObjects.pop();
+    JNI_METHOD(void, destroy)(JNIEnv * env, jclass type, jint id) {
+        LOGI("JNI::DESTROY(%i)", id);
+        if (oWallpapers.count(id) > 0) {
+            delete oWallpapers[id];
+            oWallpapers.erase(id);
         }
+    }
+
+    JNI_METHOD(void, screen)(JNIEnv * env, jclass type, jint id, jint width, jint height) {
+        LOGI("JNI::SCREEN(%i, %i)", height, width);
+        if (oWallpapers.count(id) > 0) {
+            oWallpapers[id]->screen(width, height);
+        }
+    }
+
+    JNI_METHOD(void, step)(JNIEnv * env, jclass type, jint id) {
+        if (oWallpapers.count(id) > 0) {
+            oWallpapers[id]->step();
+        }
+    }
+
+    JNI_METHOD(void, action)(JNIEnv *env, jclass type, jint id, jfloat x, jfloat y) {
+        std::for_each(oWallpapers.begin(), oWallpapers.end(), [&](std::map<long, Wallpaper*>::value_type &item) {
+            item.second->action(x, y);
+        });
+    }
+
+    JNI_METHOD(void, setSettings)(JNIEnv *env, jclass type, jint color, jint form) {
+        std::for_each(oWallpapers.begin(), oWallpapers.end(), [&](std::map<long, Wallpaper*>::value_type &item) {
+            item.second->setSettings(color, form);
+        });
+    }
+
+    JNI_METHOD(void, setParticles)(JNIEnv *env, jclass type, jint count) {
+        std::for_each(oWallpapers.begin(), oWallpapers.end(), [&](std::map<long, Wallpaper*>::value_type &item) {
+            item.second->setParticles(count);
+        });
+    }
+
+    JNI_METHOD(void, setIsChange)(JNIEnv *env, jclass type, jboolean isChange) {
+        std::for_each(oWallpapers.begin(), oWallpapers.end(), [&](std::map<long, Wallpaper*>::value_type &item) {
+            item.second->setIsChange(isChange);
+        });
     }
 }

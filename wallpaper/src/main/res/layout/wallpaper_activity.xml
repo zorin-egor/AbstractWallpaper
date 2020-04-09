@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ru.testsimpleapps.lifewallpaperabstract.WallpaperGLSurfaceViewActivity
-        android:id="@+id/gl_surfaces_view"
+    <ru.testsimpleapps.lifewallpaperabstract.views.WallpaperSurface
+        android:id="@+id/wallpaper_surfaces"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
@@ -24,14 +24,14 @@
 
             <Button
                 style="@style/ButtonCommon"
-                android:id="@+id/button_particles_increase"
+                android:id="@+id/particles_increase_button"
                 android:layout_weight="1"
                 android:text="@string/button_particles_increase"
                 />
 
             <Button
                 style="@style/ButtonCommon"
-                android:id="@+id/button_particles_decrease"
+                android:id="@+id/particles_decrease_button"
                 android:layout_weight="1"
                 android:text="@string/button_particles_decrease"
                 />
@@ -43,6 +43,7 @@
             android:layout_gravity="top|center_horizontal"
             android:gravity="center"
             android:text="@string/hint_dynamic_change"/>
+
     </LinearLayout>
 
     <LinearLayout
@@ -59,19 +60,21 @@
 
             <Button
                 style="@style/ButtonCommon"
-                android:id="@+id/button_install_static_random"
+                android:id="@+id/set_static_random_button"
                 android:layout_weight="1"
                 android:text="@string/button_static_random"
                 />
+
             <Button
                 style="@style/ButtonCommon"
-                android:id="@+id/button_install_dynamic_uniform"
+                android:id="@+id/set_dynamic_uniform_button"
                 android:layout_weight="1"
                 android:text="@string/button_dynamic_uniform"
                 />
+
             <Button
                 style="@style/ButtonCommon"
-                android:id="@+id/button_install_dynamic_random"
+                android:id="@+id/set_dynamic_random_button"
                 android:layout_weight="1"
                 android:text="@string/button_dynamic_random"
                 />
@@ -85,25 +88,28 @@
 
             <Button
                 style="@style/ButtonCommon"
-                android:id="@+id/button_install_red"
+                android:id="@+id/set_red_button"
                 android:layout_weight="1"
                 android:text="@string/button_red"
                 />
+
             <Button
                 style="@style/ButtonCommon"
-                android:id="@+id/button_install_green"
+                android:id="@+id/set_green_button"
                 android:layout_weight="1"
                 android:text="@string/button_green"
                 />
+
             <Button
                 style="@style/ButtonCommon"
-                android:id="@+id/button_install_blue"
+                android:id="@+id/set_blue_button"
                 android:layout_weight="1"
                 android:text="@string/button_blue"
                 />
+
             <Button
                 style="@style/ButtonCommon"
-                android:id="@+id/button_install_random"
+                android:id="@+id/set_random_button"
                 android:layout_weight="1"
                 android:text="@string/button_random"
                 />
@@ -117,20 +123,22 @@
 
             <Button
                 style="@style/ButtonCommon"
-                android:id="@+id/button_install_wallpaper"
+                android:id="@+id/set_wallpaper_button"
                 android:layout_weight="2"
                 android:text="@string/button_install_wallpaper"
                 android:background="@drawable/button_background_yellow"
                 />
+
             <Button
                 style="@style/ButtonCommon"
-                android:id="@+id/button_set_change"
+                android:id="@+id/set_change_button"
                 android:layout_weight="1"
                 android:text="@string/button_set_change"
                 />
+
             <Button
                 style="@style/ButtonCommon"
-                android:id="@+id/button_exit"
+                android:id="@+id/exit_button"
                 android:layout_weight="2"
                 android:text="@string/button_exit"
                 />

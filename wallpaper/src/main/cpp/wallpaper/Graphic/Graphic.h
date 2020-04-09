@@ -1,144 +1,135 @@
-#ifndef LIFEWALLPAPERABSTRACT_STAR_H
-#define LIFEWALLPAPERABSTRACT_STAR_H
+#ifndef GRAPHIC_H
+#define GRAPHIC_H
 
+#include <mutex>
 #include <GLES2/gl2.h>
 #include "../AbstractClasses/Render.h"
 #include "../Common/Methods.h"
 #include "../Common/LogGL.h"
 
 class Graphic : public Render {
+
     public:
-        static const enum FUNCTION_TYPE { DYNAMIC_UNIFORM = 0, DYNAMIC_RANDOM = 1, STATIC_RANDOM = 2, HYPOCYCLOID = 3, EPICYCLOID = 4 };
-        static const enum COLOR_TYPE { RAND = 0, RED = 1, GREEN = 2, BLUE = 3 };
 
-        Graphic(FUNCTION_TYPE _type,
-                COLOR_TYPE _color,
-                bool _isChange,
-                GLuint _count,
-                GLfloat _centerX,
-                GLfloat _centerY,
-                GLfloat _radiusX,
-                GLfloat _radiusY,
-                GLuint _programID,
-                GLuint _textureID,
-                GLuint _starsAngle,
-                GLuint _starColor,
-                GLuint _starCenter,
-                GLuint _starRadius,
-                GLuint _starArguments,
-                GLuint _starSize,
-                GLuint _starTotalDeltaSpeed) : type(_type),
-                                               color(_color),
-                                               isChange(_isChange),
-                                               count(_count),
-                                               centerX(_centerX),
-                                               centerY(_centerY),
-                                               radiusX(_radiusX),
-                                               radiusY(_radiusY),
-                                               programID(_programID),
-                                               textureID(_textureID),
-                                               starsAngle(_starsAngle),
-                                               starColor(_starColor),
-                                               starCenter(_starCenter),
-                                               starRadius(_starRadius),
-                                               starArguments(_starArguments),
-                                               starSize(_starSize),
-                                               starTotalDeltaSpeed(_starTotalDeltaSpeed),
-                                               previousActionX(0.0f),
-                                               previousActionY(0.0f),
-                                               STRICT_ARGUMENTS_MAX(5.0f),
-                                               STRICT_ARGUMENTS_MIN(1.1f),
-                                               STRICT_SPEED_MAX(10000.0f),
-                                               STRICT_SPEED_MIN(0.0f),
-                                               SIZE_POINT(5.0f),
-                                               DARGUMENT_ARRAY_SPEED(0.000001f),
-                                               STRICT_TOUCH_CHANGE(10000.0f)
-    {
-        LOGI("Graphic::Graphic()");
-        isVisible = true;
-        isProgramWork = false;
-        init();
-    }
+        static const enum FUNCTION_TYPE {
+            DYNAMIC_UNIFORM = 0,
+            DYNAMIC_RANDOM = 1,
+            STATIC_RANDOM = 2,
+            HYPOCYCLOID = 3,
+            EPICYCLOID = 4
+        };
 
-    virtual ~Graphic(){
-        LOGI("Graphic::~Graphic()");
-        // Off attributes
-        //glDisableVertexAttribArray(starsAngle);
-        //glDisableVertexAttribArray(starColor);
-        delete [] arrayPosition;
-        delete [] arrayColor;
-    }
+        static const enum COLOR_TYPE {
+            RAND = 0,
+            RED = 1,
+            GREEN = 2,
+            BLUE = 3
+        };
 
-    void render();
-    void setCoords(GLfloat x, GLfloat y);
-    void setSettings(COLOR_TYPE color, FUNCTION_TYPE type);
-    void setIsChange(bool isChange);
+        static const GLuint SIZE_ARRAYS = 4;
+        static const GLfloat STATIC_FIGURES[107][4];
+        static const GLfloat STRICT_SPEED_MAX;
+        static const GLfloat STRICT_SPEED_MIN;
+        static const GLfloat STRICT_ARGUMENTS_MAX;
+        static const GLfloat STRICT_ARGUMENTS_MIN;
+        static const GLfloat ARGUMENT_ARRAY_SPEED;
+        static const GLfloat STRICT_TOUCH_CHANGE;
+        static const GLfloat SIZE_POINT;
 
-    void setVisible(bool _isVisible){
-        isVisible = _isVisible;
-    }
 
-    bool getVisible(){
-        return isVisible;
-    }
+    private:
 
-private:
+        std::mutex m_oDrawMutex;
 
-    void init();
-    void setValues();
+        // For shader
+        const GLuint m_nTextureId;
+        const GLuint m_nProgramId;
+        const GLuint m_nStarsAngle;
+        const GLuint m_nStarColor;
+        const GLuint m_nStarCenter;
+        const GLuint m_nStarRadius;
+        const GLuint m_nStarArguments;
+        const GLuint m_nStarSize;
+        const GLuint m_nStarTotalDeltaSpeed;
 
-    // For type of function for output
-    FUNCTION_TYPE type;
-    // For figure color
-    COLOR_TYPE color;
+        // For data
+        const GLuint m_nCount;
+        const GLfloat m_fCenterX;
+        const GLfloat m_fCenterY;
+        const GLfloat m_fRadiusX;
+        const GLfloat m_fRadiusY;
 
-    // For shader
-    const GLuint textureID;
-    const GLuint programID;
-    const GLuint starsAngle;
-    const GLuint starColor;
-    const GLuint starCenter;
-    const GLuint starRadius;
-    const GLuint starArguments;
-    const GLuint starSize;
-    const GLuint starTotalDeltaSpeed;
+        // For dynamic change
+        GLfloat m_fPreviousActionX;
+        GLfloat m_fPreviousActionY;
+        GLfloat m_fArguments[SIZE_ARRAYS];
+        GLfloat m_fMaxStrictArgument[SIZE_ARRAYS];
+        GLfloat m_fMinStrictArgument[SIZE_ARRAYS];
+        GLfloat m_fArgumentsTransformSpeed[SIZE_ARRAYS];
+        GLfloat m_fTotalDeltaSpeed;
+        GLfloat m_fParticlesSpeed;
+        GLfloat * m_pArrayColor;
+        GLfloat * m_pArrayPosition;
 
-    // For data
-    static const GLuint SIZE_ARRAYS = 4;
-    const GLuint count;
-    const GLfloat centerX;
-    const GLfloat centerY;
-    const GLfloat radiusX;
-    const GLfloat radiusY;
+        // For type of function for output
+        FUNCTION_TYPE m_oType;
+        // For figure color
+        COLOR_TYPE m_oColor;
 
-    // For intervals strict
-    const GLfloat STRICT_SPEED_MAX;
-    const GLfloat STRICT_SPEED_MIN;
-    const GLfloat STRICT_ARGUMENTS_MAX;
-    const GLfloat STRICT_ARGUMENTS_MIN;
-    static const GLfloat STATIC_FIGURES[107][4];
+        // For visibility
+        bool m_bIsVisible;
+        // Change dynamically or not?
+        bool m_bIsChange;
 
-    // For dynamic change
-    GLfloat previousActionX;
-    GLfloat previousActionY;
-    GLfloat arguments[SIZE_ARRAYS];
-    GLfloat maxStrictArgument[SIZE_ARRAYS];
-    GLfloat minStrictArgument[SIZE_ARRAYS];
-    GLfloat dArgumentsTransformSpeed[SIZE_ARRAYS];
-    GLfloat * arrayColor;
-    GLfloat * arrayPosition;
-    GLfloat totalDeltaSpeed;
-    GLfloat dParticlesSpeed;
-    const GLfloat DARGUMENT_ARRAY_SPEED;
-    const GLfloat STRICT_TOUCH_CHANGE;
-    const GLfloat SIZE_POINT;
 
-    // For visibility
-    bool isVisible;
-    // Program work
-    bool isProgramWork;
-    // Change dynamically or not?
-    bool isChange;
+    public:
+
+        Graphic(FUNCTION_TYPE type,
+                COLOR_TYPE color,
+                bool isChange,
+                GLuint count,
+                GLfloat centerX,
+                GLfloat centerY,
+                GLfloat radiusX,
+                GLfloat radiusY,
+                GLuint programID,
+                GLuint textureID,
+                GLuint starsAngle,
+                GLuint starColor,
+                GLuint starCenter,
+                GLuint starRadius,
+                GLuint starArguments,
+                GLuint starSize,
+                GLuint starTotalDeltaSpeed);
+
+        virtual ~Graphic();
+
+
+    public:
+
+        void render();
+
+        void setCoords(GLfloat x, GLfloat y);
+
+        void setSettings(COLOR_TYPE color, FUNCTION_TYPE type);
+
+        void setIsChange(bool isChange);
+
+        void setVisible(bool isVisible) {
+            m_bIsVisible = isVisible;
+        }
+
+        bool getVisible() {
+            return m_bIsVisible;
+        }
+
+
+    private:
+
+        void init();
+
+        void setValues();
+
 };
 
 #endif
