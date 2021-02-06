@@ -25,10 +25,5 @@ Android NDK. OpenGL ES 2.0.  Abstract live wallpaper.
 
 ## Screenshots
 <p align="center">
-<img src="https://cloud.githubusercontent.com/assets/13707343/22035690/fb6e6c58-dd01-11e6-99e4-30f62902f556.png" width="350"/>
-<img src="https://cloud.githubusercontent.com/assets/13707343/22035692/fb71fd82-dd01-11e6-990d-b063338b462e.png" width="350"/>
-<img src="https://cloud.githubusercontent.com/assets/13707343/22035688/fb6c7538-dd01-11e6-91d1-04e99a0e2ecb.png" width="350"/>
-<img src="https://cloud.githubusercontent.com/assets/13707343/22035687/fb6c80fa-dd01-11e6-8716-dd0dfec18ec0.png" width="350"/>
-<img src="https://cloud.githubusercontent.com/assets/13707343/22035691/fb6f7742-dd01-11e6-90f7-c5ad09ac8d19.png" width="350"/>
-<img src="https://cloud.githubusercontent.com/assets/13707343/22035689/fb6e2dec-dd01-11e6-976c-35ec4c3e10bb.png" width="350"/>
+<img src="https://user-images.githubusercontent.com/13707343/107118896-f6ccd680-6894-11eb-9eea-7860e9922839.gif"/>
 </p>
