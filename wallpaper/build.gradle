@@ -10,7 +10,7 @@ def FLAVOR_DIM = 'market'
 
 android {
     namespace = 'ru.testsimpleapps.lifewallpaperabstract'
-    flavorDimensions FLAVOR_DIM
+    flavorDimensions = [FLAVOR_DIM]
 
     defaultConfig {
         applicationId APP_ID
