@@ -2,7 +2,6 @@ import java.text.SimpleDateFormat
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 def APP_ID = 'ru.testsimpleapps.lifewallpaperabstract'
 def APP_VERSION = '1.1'
@@ -10,15 +9,15 @@ def APP_CODE = 9
 def FLAVOR_DIM = 'market'
 
 android {
-
-    compileSdkVersion = SDK_MAX
-    buildToolsVersion = BUILD_TOOL
+    namespace = 'ru.testsimpleapps.lifewallpaperabstract'
     flavorDimensions FLAVOR_DIM
 
     defaultConfig {
         applicationId APP_ID
         minSdkVersion SDK_MIN
         targetSdkVersion SDK_MAX
+        compileSdk SDK_MAX
+        buildToolsVersion = BUILD_TOOL
         versionCode APP_CODE
         versionName APP_VERSION
         multiDexEnabled true
@@ -109,8 +108,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     packagingOptions {
@@ -124,7 +127,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.21'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.22'
 }

@@ -2,7 +2,7 @@
 
 buildscript {
 
-    ext.kotlin_version = '1.4.21'
+    ext.kotlin_version = '1.9.22'
 
     repositories {
         google()
@@ -10,16 +10,16 @@ buildscript {
     }
 
     dependencies {
-        classpath "com.android.tools.build:gradle:4.1.2"
+        classpath "com.android.tools.build:gradle:8.2.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
 allprojects {
     ext {
-        SDK_MIN = 14
-        SDK_MAX = 30
-        BUILD_TOOL = '29.0.2'
+        SDK_MIN = 21
+        SDK_MAX = 34
+        BUILD_TOOL = '34.0.0'
     }
 
     repositories {

@@ -11,7 +11,7 @@ import ru.testsimpleapps.lifewallpaperabstract.WallpaperLib;
 
 public class WallpaperSurface extends GLSurfaceView {
 
-    private WallpaperRender mWallpaperRender;
+    private WallpaperRender wallpaperRender;
 
     public WallpaperSurface(Context context) {
         super(context);
@@ -24,14 +24,14 @@ public class WallpaperSurface extends GLSurfaceView {
     }
 
     public void onDestroy() {
-        WallpaperLib.destroy(mWallpaperRender.hashCode());
+        WallpaperLib.destroy(wallpaperRender.hashCode());
         super.onDetachedFromWindow();
     }
 
     private void init() {
-        mWallpaperRender = new WallpaperRender(getContext());
+        wallpaperRender = new WallpaperRender(getContext());
         setEGLContextClientVersion(2);
-        setRenderer(mWallpaperRender);
+        setRenderer(wallpaperRender);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             setPreserveEGLContextOnPause(true);
@@ -55,7 +55,7 @@ public class WallpaperSurface extends GLSurfaceView {
             case MotionEvent.ACTION_MOVE:
                 if (event.getPointerCount() < 3) {
                     WallpaperLib.action(
-                            mWallpaperRender.hashCode(),
+                            wallpaperRender.hashCode(),
                             event.getX(event.getActionIndex()),
                             event.getY(event.getActionIndex())
                     );
