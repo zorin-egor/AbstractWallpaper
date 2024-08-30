@@ -1,8 +1,6 @@
 # AbstractWallpaper
 Android NDK. OpenGL ES 2.0.  Abstract live wallpaper.
 
-<u><b>Play market:</u></b> https://play.google.com/store/apps/details?id=ru.testsimpleapps.lifewallpaperabstract
-
   - has 1 shader program for:
     * moving shape
 
